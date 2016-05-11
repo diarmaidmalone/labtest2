@@ -1,9 +1,9 @@
-class Plane extends GameObject
+//class Plane extends GameObject
 {
  
- Plane()
- {
+ //Plane()
+ //{
    
- }
+ //}
  
 }
