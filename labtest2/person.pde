@@ -1,10 +1,11 @@
 class Person extends GameObject
 {
  
- int personX;
- int personY;
+ int personX = 0;
+ int personY = -50;
  int personMoveX;
  int personMoveY;
+ int personSpeed = 3;
   
  Person(float x, float y)
  {
@@ -15,7 +16,33 @@ class Person extends GameObject
  
  void update()
  {
+   if (boxY >= height/2)
+   {
+     personX += personSpeed;
+   }
    
+   if(keyPressed)
+   {
+     if(keyCode == LEFT)
+     {
+        personX -= personSpeed; 
+     }
+     
+     if(keyCode == RIGHT)
+     {  
+        personX += personSpeed;
+     }
+     
+     if(keyCode == UP)
+     {
+       personY -= personSpeed;
+     }
+     
+     if(keyCode == DOWN)
+     {
+       personY += personSpeed;
+     }
+   }
  }
  
  void render()
@@ -24,7 +51,7 @@ class Person extends GameObject
   translate(pos.x, pos.y);
   fill(255, 0, 0);
   stroke(255, 0, 0);
-  triangle(- halfW, halfW, 0, -halfW, halfW, halfW);
+  rect(personX, personY, 25, 50);
   popMatrix();
  }
 }

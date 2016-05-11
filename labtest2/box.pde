@@ -1,14 +1,10 @@
 class Box extends GameObject
 {
  
- int boxX = planeX;
- int boxY = planeY;
  int boxWidth = 20;
  int boxHeight = 20;
  int gravity = 4;
- 
- boolean falling = false;
-  
+   
  Box(float x, float y)
  {
    super(x, y);
@@ -20,11 +16,12 @@ class Box extends GameObject
     {
       boxX += planeSpeed;
     }
+    
     if(boxX >= width + 2*planeWidth && boxY == planeY)
-   {
-     boxX = -50;
-   }
-   
+    {
+      boxX = -50;
+    }
+    
    if(keyPressed)
    {
      if(key == ' ')
@@ -42,8 +39,12 @@ class Box extends GameObject
      }
    }
    
+    if(boxY >= boxLandingY)
+    {
+     falling = false; 
+    }
   }
-  
+
   void render()
   {
     pushMatrix();
