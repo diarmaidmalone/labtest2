@@ -1,18 +1,30 @@
 void setup()
 {
   size(700, 800);
+  frameRate(60);
+
+  gameObjects.add(new Ground(0, 0));
+  gameObjects.add(new Person(100, height/4 * 3));
+  gameObjects.add(new Cloud(0, cloudYPosition1));
+  gameObjects.add(new Cloud(0, cloudYPosition2));
+  gameObjects.add(new Cloud(0, cloudYPosition3));
+  gameObjects.add(new Cloud(0, cloudYPosition4));
+  gameObjects.add(new Cloud(0, cloudYPosition5));
+  gameObjects.add(new Plane(0, 0));
   
   //Ground
   groundY = height/2;
   groundWidth = width;
   groundHeight = height/2;
   
-  //Cloud
-  cloudX = width + 2*cloudWidth;
-  cloudY = height/4;
+  //Person
+  personX = 100;
+  personY = height/4 * 3;
 }
 
 boolean[] keys = new boolean[2000];
+
+ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 
 void keyPressed()
 {
@@ -30,17 +42,18 @@ int groundY;
 int groundWidth;
 int groundHeight;
 
-//Plane Variables
-int planeX = - 50;
-int planeY = 50;
-int planeWidth = 50;
-int planeHeight = planeWidth;
-
 //Cloud Variables
 int cloudX;
 int cloudY;
-int cloudWidth = 50;
-int cloudHeight = cloudWidth;
+float cloudYPosition1 = random(-150, 150);
+float cloudYPosition2 = random(-150, 150);
+float cloudYPosition3 = random(-150, 150);
+float cloudYPosition4 = random(-150, 150);
+float cloudYPosition5 = random(-150, 150);
+
+//Person Variables
+int personX;
+int personY;
 
 color ground = color(50, 255, 0);
 color sky = color(0, 200, 255);
@@ -49,34 +62,13 @@ void draw()
 {
  background(sky); 
  
- //Plane Movement
- planeX += 5;
- 
- if(planeX >= width + 2*planeWidth)
+ for(int i = 0; i < gameObjects.size(); i++)
  {
-   planeX = -50;
+   GameObject g = gameObjects.get(i);
+   g.render();
+   g.update();
  }
  
- //Cloud Movement
- cloudX -= 2;
  
- if(cloudX <= - 2*cloudWidth)
- {
-   cloudX = width + 2*cloudWidth;
- }
- 
- //Ground Code
- fill(ground);
- stroke(ground);
- rect(groundX, groundY, groundWidth, groundHeight);
-
- //Cloud Code
- fill(255);
- stroke(255);
- ellipse(cloudX, cloudY, cloudWidth, cloudHeight);
- 
- //Plane Code
- fill(0);
- stroke(0);
- rect(planeX, planeY, planeWidth, planeHeight);
+ println(frameRate);
 }
