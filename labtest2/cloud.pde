@@ -1,10 +1,10 @@
 class Cloud extends GameObject
 {
  
- int cloudWidth = 50;
+ int cloudWidth = 70;
  int cloudX = width + 2*cloudWidth;
- int cloudY = height/4;
- int cloudHeight = cloudWidth;
+ int cloudY = height/5;
+ int cloudHeight = 40;
  float cloudSpeed = random(1, 4);
   
  Cloud(float x, float y)
@@ -29,7 +29,11 @@ class Cloud extends GameObject
   {
    pushMatrix();
    translate(pos.x, pos.y);
-   ellipse(cloudX, cloudY, 50, 50);
+   fill(c);
+   stroke(c);
+   ellipse(cloudX, cloudY, cloudWidth, cloudHeight);
+   ellipse(cloudX - cloudWidth/2, cloudY, 50, 25);
+   ellipse(cloudX + cloudWidth/2, cloudY, 50, 25);
    popMatrix();
   }
 }

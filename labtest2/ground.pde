@@ -18,7 +18,8 @@ class Ground extends GameObject
  {
   pushMatrix();
   translate(pos.x, pos.y);
-  color(0, 255, 0);
+  fill(0, 255, 0);
+  stroke(0, 255, 0);
   rect(0, height/2, width, height/2);
   popMatrix();
  }

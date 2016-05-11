@@ -1,3 +1,5 @@
+//Diarmaid Malone, C15527843, c15527843@mydit.ie
+
 void setup()
 {
   size(700, 800);
@@ -11,6 +13,7 @@ void setup()
   gameObjects.add(new Cloud(0, cloudYPosition4));
   gameObjects.add(new Cloud(0, cloudYPosition5));
   gameObjects.add(new Plane(0, 0));
+  gameObjects.add(new Box(0, 0));
   
   //Ground
   groundY = height/2;
@@ -57,6 +60,7 @@ int personY;
 
 color ground = color(50, 255, 0);
 color sky = color(0, 200, 255);
+color c = color(255);
 
 void draw()
 {
@@ -68,7 +72,6 @@ void draw()
    g.render();
    g.update();
  }
- 
  
  println(frameRate);
 }
